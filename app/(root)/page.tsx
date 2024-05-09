@@ -1,9 +1,25 @@
-import React from 'react'
+import React from "react";
+import HeaderBox from "@/components/HeaderBox";
 
 const Home = () => {
-  return (
-    <div>Home</div>
-  )
-}
+  const loggedIn = { firstName: "John" }; // Replace with actual logic to get logged in user
 
-export default Home
+  return (
+    <section className="home">
+      <div className="home-content">
+        <header>
+          <HeaderBox
+            type="greeting"
+            title="Welcome"
+            user={loggedIn?.firstName || "Guest"}
+            subtext="Access your account and see your balance"
+          >
+            
+          </HeaderBox>
+        </header>
+      </div>
+    </section>
+  );
+};
+
+export default Home;
