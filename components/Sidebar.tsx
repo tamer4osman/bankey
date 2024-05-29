@@ -22,7 +22,29 @@ const Sidebar = ({ user }: SiderbarProps) => {
           />
           <h1 className="sidebar-logo">Bankey</h1>
         </Link>
-        
+        {sidebarLinks.map((link) => {
+          const isActive = pathname === link.route || pathname.startsWith(`${link.route}/active`)
+          return (
+            <Link 
+                key={link.label} 
+                href={link.route} 
+                className={
+                            cn("sidebar-link", {"bg-bank-gradient": isActive})
+                }
+            >
+                <div className="relative size-6">
+                    <Image
+                        src={link.imgURL}
+                        alt={link.label}
+                        fill
+                        className={cn({"brightness-[3] invert-0":isActive})}
+                    />
+                </div>
+                <p className={cn("sidebar-label", {"!text-white":isActive})}>{link.label}</p>
+              
+            </Link>
+          );
+        })}
       </nav>
     </section>
   );
